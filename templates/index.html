@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-widrh, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edje">
+    <title>Public Chat Room</title>
+    <style>
+    body {
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 0 20px;
+    }
+
+    .container {
+        border: 2px solid #dedede;
+        background-color: cyan;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    .container::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .time-right {
+        float: right;
+        color: black;
+    }
+
+    </style>
+</head>
+<body>
+    <h2>Public Chat Room Messages</h2>
+    {% for mes in mess %}
+    <div class="container">
+        <p>Email: {{ mes.email }}</p>
+        <p>Message: {{ mes.message }}</p>
+        <a href="update/{{ mes.id }}">Update Message</a>
+        <a href="single/{{ mes.id }}">Single Message</a>
+        {% if mes.create_date == mes.update_date %}
+        <span class="time-right">Created Date: {{ mes.create_date }}</span>
+        {% else %}
+        <span class="time-right">Updated Date: {{ mes.update_date }}</span>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <h3><a href="create/">Create Message</a></h3>
+</body>
+</html>

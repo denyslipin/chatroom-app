@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-widrh, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edje">
+    <title>Public Chat Room</title>
+    <style>
+    body {
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 0 20px;
+    }
+
+    .container {
+        border: 2px solid #dedede;
+        background-color: #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #ddd;
+    }
+    </style>
+</head>
+<body>
+    <h2>Create Message</h2>
+    <div class="container">
+        <form method="post">
+        {% csrf_token %}
+        <input type="text" name="email" placeholder="Email" maxlength="25" size="40"><br>
+        <input type="text" name="message" placeholder="Message" maxlength="100" size="110"><br>
+        <input type="submit"><br><br>
+        </form>
+        {% for message in messages %}
+        <h3>{{ message }}</h3>
+        {% endfor %}
+    </div>
+    <h3><a href="/">Public Chat Room</a></h3>
+</body>
+</html>
